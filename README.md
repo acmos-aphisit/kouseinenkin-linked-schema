@@ -1,0 +1,1 @@
+# kouseinenkin-linked-schema
