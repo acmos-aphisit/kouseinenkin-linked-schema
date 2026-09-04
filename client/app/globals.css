@@ -1,0 +1,313 @@
+:root {
+  --paper: #eef1f0;
+  --paper-line: #d6dee0;
+  --card-bg: #ffffff;
+  --card-border: #c7d0d2;
+  --ink: #16232e;
+  --ink-soft: #5b6b72;
+  --base: #a5322b;
+  --ref: #157a76;
+  --link: #1f6fb2;
+  --pay: #b5651d;
+  --inactive: #a3aeb2;
+  --amber-strong: #b97c0a;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: linear-gradient(var(--paper-line) 1px, transparent 1px) 0 0 / 100% 26px, var(--paper);
+  color: var(--ink);
+  font-family: -apple-system, "Hiragino Kaku Gothic ProN", "Yu Gothic", "Meiryo", "Segoe UI", sans-serif;
+  min-height: 100vh;
+}
+
+.dg-header {
+  padding: 28px 32px 18px;
+  border-bottom: 1px solid var(--paper-line);
+  background: rgba(238, 241, 240, 0.92);
+  position: sticky;
+  top: 0;
+  z-index: 30;
+  backdrop-filter: blur(2px);
+}
+
+.dg-header h1 {
+  margin: 0 0 4px;
+  font-size: 20px;
+  font-weight: 700;
+  letter-spacing: 0.01em;
+}
+
+.dg-subtitle {
+  margin: 0 0 16px;
+  color: var(--ink-soft);
+  font-size: 13px;
+}
+
+.dg-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 14px;
+}
+
+.dg-search {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1px solid var(--card-border);
+  background: var(--card-bg);
+  padding: 6px 10px;
+  min-width: 220px;
+}
+
+.dg-search input {
+  border: none;
+  outline: none;
+  font-size: 13px;
+  width: 100%;
+  font-family: ui-monospace, "SF Mono", Consolas, monospace;
+  color: var(--ink);
+  background: transparent;
+}
+
+.dg-search svg {
+  flex: none;
+  opacity: 0.5;
+}
+
+.dg-note-toggle {
+  border: 1px solid var(--link);
+  background: #fff;
+  color: var(--link);
+  font-size: 12.5px;
+  padding: 7px 12px;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.dg-note-toggle.on {
+  background: var(--link);
+  color: #fff;
+}
+
+.dg-legend {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-left: auto;
+  font-size: 11.5px;
+  color: var(--ink-soft);
+}
+
+.dg-legend span {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.dg-legend i {
+  width: 9px;
+  height: 9px;
+  display: inline-block;
+  border-radius: 1px;
+}
+
+.dg-hint {
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  margin-top: 10px;
+}
+
+.dg-scroll-wrap {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 34px 32px 60px;
+}
+
+.dg-inner {
+  position: relative;
+  display: inline-flex;
+  gap: 34px;
+  align-items: flex-start;
+}
+
+.dg-lines {
+  position: absolute;
+  left: 0;
+  top: 0;
+  pointer-events: none;
+  overflow: visible;
+}
+
+.dg-tcard {
+  width: 212px;
+  flex: none;
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  position: relative;
+}
+
+.dg-thead {
+  font-weight: 700;
+  font-size: 13.5px;
+  padding: 9px 11px;
+  border-bottom: 2px solid var(--ink);
+  letter-spacing: 0.02em;
+}
+
+.dg-annot {
+  font-size: 10.5px;
+  color: var(--base);
+  padding: 4px 11px 0;
+  line-height: 1.4;
+}
+
+.dg-annot small {
+  display: block;
+  color: var(--link);
+  font-weight: 600;
+}
+
+.dg-frow {
+  display: flex;
+  align-items: center;
+  padding: 3.5px 11px;
+  font-family: ui-monospace, "SF Mono", Consolas, monospace;
+  font-size: 11.6px;
+  cursor: default;
+  border-bottom: 1px solid #f0f2f1;
+  transition: background 0.12s, opacity 0.15s;
+  white-space: nowrap;
+}
+
+.dg-frow.clickable {
+  cursor: pointer;
+}
+
+.dg-frow.clickable:hover {
+  background: #f5f7f6;
+}
+
+.dg-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  margin-right: 7px;
+  flex: none;
+  background: var(--ink-soft);
+  opacity: 0.35;
+}
+
+.dg-frow[data-cat="base"] .dg-dot {
+  background: var(--base);
+  opacity: 1;
+}
+.dg-frow[data-cat="ref"] .dg-dot {
+  background: var(--ref);
+  opacity: 1;
+}
+.dg-frow[data-cat="link"] .dg-dot {
+  background: var(--link);
+  opacity: 1;
+}
+.dg-frow[data-cat="pay"] .dg-dot {
+  background: var(--pay);
+  opacity: 1;
+}
+.dg-frow[data-cat="inactive"] .dg-dot {
+  background: var(--inactive);
+  opacity: 0.6;
+}
+
+.dg-frow[data-cat="base"] {
+  color: var(--base);
+  font-weight: 700;
+}
+.dg-frow[data-cat="ref"] {
+  color: var(--ref);
+}
+.dg-frow[data-cat="link"] {
+  color: var(--link);
+  text-decoration: underline;
+  text-decoration-color: #bcd6ea;
+}
+.dg-frow[data-cat="pay"] {
+  color: var(--pay);
+  text-decoration: underline;
+  text-decoration-color: #eccc9a;
+}
+.dg-frow[data-cat="inactive"] {
+  color: var(--inactive);
+}
+.dg-frow[data-cat="normal"] {
+  color: var(--ink);
+}
+
+.dg-frow.dim {
+  opacity: 0.22;
+}
+.dg-frow.match {
+  background: #fff2cf;
+}
+.dg-frow.active {
+  background: #fff2cf;
+  box-shadow: inset 2px 0 0 var(--amber-strong);
+}
+
+.dg-note-card {
+  position: absolute;
+  width: 300px;
+  background: #3c74ab;
+  color: #fff;
+  padding: 14px 16px;
+  font-size: 12px;
+  line-height: 1.65;
+  z-index: 20;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.18);
+  display: none;
+}
+
+.dg-note-card.show {
+  display: block;
+}
+
+.dg-note-card .date {
+  font-weight: 700;
+  text-decoration: underline;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.dg-note-card ul {
+  margin: 6px 0 0;
+  padding-left: 16px;
+}
+
+.dg-note-card li {
+  margin-bottom: 3px;
+}
+
+.dg-note-card u {
+  text-decoration-color: #ffd479;
+}
+
+.dg-footer {
+  padding: 14px 32px 30px;
+  font-size: 11.5px;
+  color: var(--ink-soft);
+  border-top: 1px solid var(--paper-line);
+}
+
+.dg-footer b {
+  color: var(--ink);
+}
