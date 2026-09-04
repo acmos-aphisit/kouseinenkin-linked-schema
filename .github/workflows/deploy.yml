@@ -18,14 +18,13 @@ concurrency:
 jobs:
   build:
     runs-on: ubuntu-latest
-    # Set default working directory for all run steps to client/
     defaults:
       run:
         working-directory: ./client
 
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Detect package manager
         id: detect-package-manager
@@ -46,14 +45,14 @@ jobs:
           fi
 
       - name: Setup Node.js
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v5
         with:
-          node-version: "lts/*"
+          node-version: "22"
           cache: ${{ steps.detect-package-manager.outputs.manager }}
-          cache-dependency-path: client/package-lock.json # Or client/yarn.lock
+          cache-dependency-path: client/package-lock.json
 
       - name: Setup Pages
-        uses: actions/configure-pages@v5
+        uses: actions/configure-pages@v6
         with:
           static_site_generator: next
 
@@ -64,9 +63,8 @@ jobs:
         run: ${{ steps.detect-package-manager.outputs.runner }} next build
 
       - name: Upload artifact
-        uses: actions/upload-pages-artifact@v3
+        uses: actions/upload-pages-artifact@v4
         with:
-          # Point to the out folder inside client
           path: ./client/out
 
   deploy:
@@ -78,4 +76,4 @@ jobs:
     steps:
       - name: Deploy to GitHub Pages
         id: deployment
-        uses: actions/deploy-pages@v4
+        uses: actions/deploy-pages@v5
