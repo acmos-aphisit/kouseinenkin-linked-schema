@@ -109,9 +109,9 @@ export default function SchemaDiagram() {
   return (
     <>
       <header className="dg-header">
-        <h1>社保・給与データモデル ― テーブル系譜図</h1>
+        <h1>厚生年金サポートシステム_連動更新処理図解</h1>
         <p className="dg-subtitle">
-          資格所得 → 基本マスタ → 資格喪失／任用期間変更／随時改定／定時決定／賞与支払 の項目連動をたどるインタラクティブ版です。
+          資格所得 → 基本マスタ → 資格喪失／任用期間変更／随時改定／定時決定／賞与支払 の厚生年金事務サポートシステムにて基本マスタ検索画面での連動更新処理の図解。
         </p>
         <div className="dg-toolbar">
           <div className="dg-search">
